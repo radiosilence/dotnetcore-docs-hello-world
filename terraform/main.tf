@@ -5,7 +5,7 @@ terraform {
     }
   }
   cloud {
-    organization = var.organization
+    organization = "crack-squirrels"
     workspaces {
       name = "learn-azure-webapp-law"
     }
