@@ -10,3 +10,9 @@ variable "resource_group_name" {
   description = "The name of the resource group"
   default     = "LearnAzureWebappLawRG"
 }
+
+variable "location" {
+  type        = string
+  description = "The location of the resource group"
+  default     = "uksouth"
+}

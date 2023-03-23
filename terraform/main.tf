@@ -18,7 +18,7 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "this" {
   name     = var.resource_group_name
-  location = "uksouth"
+  location = var.location
 
   tags = {
     team               = "Ops"
