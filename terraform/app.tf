@@ -1,6 +1,6 @@
 
 resource "azurerm_service_plan" "this" {
-  name                = "learn-azure-webapp-law"
+  name                = "learn-azure-webapp-service-plan"
   resource_group_name = azurerm_resource_group.this.name
   location            = azurerm_resource_group.this.location
   sku_name            = "S1"
