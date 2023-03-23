@@ -5,7 +5,7 @@ terraform {
     }
   }
   cloud {
-    organization = "crack-squirrels"
+    organization = var.organization
     workspaces {
       name = "learn-azure-webapp-law"
     }
@@ -17,7 +17,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "this" {
-  name     = "LearnAzureWebappLawRG"
+  name     = var.resource_group_name
   location = "uksouth"
 
   tags = {

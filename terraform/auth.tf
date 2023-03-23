@@ -11,7 +11,7 @@ resource "azurerm_federated_identity_credential" "this" {
   audience            = ["api://AzureADTokenExchange"]
   issuer              = "https://token.actions.githubusercontent.com"
   parent_id           = azurerm_user_assigned_identity.this.id
-  subject             = "repo:radiosilence/dotnetcore-docs-hello-world:environment:Production"
+  subject             = var.federated_identity_subject
 }
 
 resource "azurerm_role_assignment" "this" {
