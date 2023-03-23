@@ -13,3 +13,9 @@ resource "azurerm_federated_identity_credential" "this" {
   parent_id           = azurerm_user_assigned_identity.this.id
   subject             = "repo:radiosilence/dotnetcore-docs-hello-world:environment:Production"
 }
+
+resource "azurerm_role_assignment" "this" {
+  scope                = azurerm_resource_group.this.id
+  role_definition_name = "Contributor"
+  principal_id         = azurerm_user_assigned_identity.this.principal_id
+}
