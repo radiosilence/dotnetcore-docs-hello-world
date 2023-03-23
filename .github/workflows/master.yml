@@ -13,7 +13,7 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_WEBAPP_NAME: my-app # set this to your application's name
+  AZURE_WEBAPP_NAME: .net-app # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: "." # set this to the path to your web app project, defaults to the repository root
   DOTNET_VERSION: "6.0.x" # set this to the dot net version to use
 
@@ -44,14 +44,14 @@ jobs:
         run: |
           dotnet restore
           dotnet build --configuration Release
-          dotnet publish -c Release --property:PublishDir='${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp'
+          dotnet publish -c Release --property:PublishDir='${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/${AZURE_WEBAPP_NAME}'
 
       # Deploy to Azure Web apps
       - name: "Run Azure webapp deploy action using publish profile credentials"
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }} # Replace with your app name
-          package: "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp"
+          package: "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/${AZURE_WEBAPP_NAME}"
 
       - name: logout
         run: |
