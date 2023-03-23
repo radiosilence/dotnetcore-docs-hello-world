@@ -41,6 +41,9 @@ resource "azurerm_windows_web_app" "this" {
   service_plan_id     = azurerm_service_plan.this.id
 
   site_config {
-
+    application_stack {
+      current_stack  = "dotnet"
+      dotnet_version = "v6.0"
+    }
   }
 }
